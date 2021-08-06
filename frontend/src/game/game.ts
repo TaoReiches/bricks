@@ -14,7 +14,7 @@ class gameContainer extends PIXI.Container {
     public tick(delta: number) {
         // rotate the container!
         // use delta to create frame-independent transform
-        // this.rotation -= 0.01 * delta;
+        this.rotation -= 0.01 * delta;
     }
 
     private addBalls() {
@@ -23,6 +23,14 @@ class gameContainer extends PIXI.Container {
         const w = 50;
         const h = 50;
         console.log("texture w: " + w + " h:" + h + " original w: " + texture.width);
+
+        // top left
+        const topleft = new PIXI.Sprite(texture);
+        topleft.x = 700;
+        topleft.y = 700;
+        topleft.width = 100;
+        topleft.height = 100;
+        super.addChild(topleft);
 
         const style = new PIXI.TextStyle({
             fontFamily: "Arial",
