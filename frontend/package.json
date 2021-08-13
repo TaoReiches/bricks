@@ -1,22 +1,23 @@
 {
-  "name": "launcher_frontend",
-  "homepage": "./",
-  "private": true,
-  "devDependencies": {
-    "html-webpack-plugin": "^5.3.2",
-    "prettier": "2.3.2",
-    "ts-loader": "^9.2.5",
-    "typescript": "^4.3.5",
-    "webpack": "^5.46.0",
-    "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
-  },
-  "dependencies": {
-    "pixi.js": "^6.0.4"
-  },
-  "scripts": {
-    "start": "webpack serve --open",
-    "build": "webpack",
-    "format": "prettier --write src/"
-  }
+    "name": "launcher_frontend",
+    "homepage": "./",
+    "private": true,
+    "devDependencies": {
+        "html-webpack-plugin": "^5.3.2",
+        "prettier": "2.3.2",
+        "ts-loader": "^9.2.5",
+        "typescript": "^4.3.5",
+        "webpack": "^5.46.0",
+        "webpack-cli": "^4.7.2",
+        "webpack-dev-server": "^3.11.2"
+    },
+    "dependencies": {
+        "@pixi/events": "^6.1.1",
+        "pixi.js": "^6.1.1"
+    },
+    "scripts": {
+        "start": "webpack serve --open",
+        "build": "webpack",
+        "format": "prettier --write src/"
+    }
 }

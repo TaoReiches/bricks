@@ -3,11 +3,17 @@ import Settings from "./config/settings";
 
 import gameContainer from "./game/game";
 
+Settings.initialize();
+console.log("window size: " + Settings.AppWidth + " : " + Settings.AppHeight);
+
 const app = new PIXI.Application({
     width: Settings.AppWidth,
     height: Settings.AppHeight,
     backgroundColor: Settings.AppBackgroundColor,
+    autoDensity: true,
+    antialias: true,
     resolution: window.devicePixelRatio || 1,
+    // resizeTo: window,
 });
 document.body.appendChild(app.view);
 

@@ -1,10 +1,11 @@
 import * as PIXI from "pixi.js";
+import Settings from "../config/settings";
 
 class Background {
     constructor(container: PIXI.Container) {
         // draw rectangle
-        const w = container.width;
-        const h = container.height;
+        const w = Settings.AppWidth;
+        const h = Settings.AppHeight;
         const rect = new PIXI.Graphics();
         rect.lineStyle(2, 0xfeeb77, 1);
         rect.moveTo(10, 10);
