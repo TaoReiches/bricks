@@ -1,38 +1,34 @@
 import * as PIXI from "pixi.js";
-import { ball } from "../assets/images";
-import Settings from "../config/settings";
+import { IContainer } from "../interface/IContainer";
+import { BallManagement } from "../logic/ballManagement";
 import Background from "./background";
 
-class gameContainer extends PIXI.Container {
-    public initialize() {
-        this.addBalls();
+class gameContainer extends PIXI.Container implements IContainer {
+    gameContainer: PIXI.Container = this;
 
-        console.log("game container width: " + this.width + " height: " + this.height);
+    private readonly ballManagement: BallManagement;
+
+    constructor() {
+        super();
+
+        this.addBalls();
+        // console.log("game container width: " + this.width + " height: " + this.height);
 
         new Background(this);
+
+        this.ballManagement = new BallManagement(this);
+        this.ballManagement.resetBall();
     }
 
     public tick(delta: number) {
         // rotate the container!
         // use delta to create frame-independent transform
         // this.rotation -= 0.01 * delta;
+        // console.log(PIXI.Ticker.shared.elapsedMS);
+        this.ballManagement.update(PIXI.Ticker.shared.elapsedMS);
     }
 
     private addBalls() {
-        // Create a new texture
-        const texture = PIXI.Texture.from(ball);
-        const w = 50;
-        const h = 50;
-        // console.log("texture w: " + w + " h:" + h + " original w: " + texture.width);
-
-        // top left
-        const topleft = new PIXI.Sprite(texture);
-        topleft.x = 100;
-        topleft.y = 100;
-        topleft.width = 100;
-        topleft.height = 100;
-        super.addChild(topleft);
-
         // const style = new PIXI.TextStyle({
         //     fontFamily: "Arial",
         //     fontSize: 36,
@@ -50,7 +46,6 @@ class gameContainer extends PIXI.Container {
         //     wordWrapWidth: 440,
         //     lineJoin: "round",
         // });
-
         // // Create a 5x5 grid of bunnies
         // for (let i = 0; i < 25; i++) {
         //     let bunny = PIXI.Sprite.from(texture);
@@ -65,7 +60,6 @@ class gameContainer extends PIXI.Container {
         //     bunny.height = h;
         //     bunny.tint = Math.random() * 0xffffff;
         //     super.addChild(bunny);
-
         //     const number = new PIXI.Text(i.toString(), style);
         //     number.x = x;
         //     number.y = y;
