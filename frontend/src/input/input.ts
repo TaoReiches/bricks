@@ -1,5 +1,6 @@
 import { Application } from "@pixi/app";
 import { Data } from "../logic/dataManagement";
+import gameEvents, { GameTypes } from "./gameEvents";
 
 class Input {
     public initialize(app: Application) {
@@ -8,11 +9,13 @@ class Input {
         app.view.addEventListener("click", this.onViewClick);
     }
 
-    private onViewClick() {
+    private onViewClick(ev: MouseEvent) {
         if (Data.onShooting) {
             return;
         }
         Data.onShooting = true;
+
+        gameEvents.dispatchEvents("VIEW_CLICK", ev.x, ev.y);
     }
 }
 

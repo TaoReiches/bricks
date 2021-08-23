@@ -13,6 +13,7 @@
     },
     "dependencies": {
         "@pixi/events": "^6.1.1",
+        "eventemitter3": "^4.0.7",
         "pixi.js": "^6.1.1"
     },
     "scripts": {
