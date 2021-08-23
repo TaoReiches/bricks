@@ -2,6 +2,7 @@ import * as PIXI from "pixi.js";
 import Settings from "./config/settings";
 
 import gameContainer from "./game/game";
+import input from "./input/input";
 
 Settings.initialize();
 console.log("window size: " + Settings.AppWidth + " : " + Settings.AppHeight);
@@ -19,6 +20,8 @@ document.body.appendChild(app.view);
 
 const game = new gameContainer();
 app.stage.addChild(game);
+
+input.initialize(app);
 
 app.ticker.add((delta) => {
     game.tick(delta);
